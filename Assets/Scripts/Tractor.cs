@@ -25,6 +25,7 @@ public class Tractor : MonoBehaviour
     {
         transform.position += new Vector3(0, 0, Time.deltaTime * moveSpeed);
         transform.position += new Vector3(Input.GetAxis("Horizontal") * Time.deltaTime * hmoveSpeed, 0, 0);
+        transform.forward = new Vector3(0,0,1);
     }
 
 
