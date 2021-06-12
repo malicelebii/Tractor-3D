@@ -10,6 +10,7 @@ public class Tractor : MonoBehaviour
     [SerializeField] GameObject[] trailers;
 
     public Animator tractor;
+    public Animator trailer;
 
 
 
@@ -19,6 +20,7 @@ public class Tractor : MonoBehaviour
     void Start()
     {
         tractor.SetBool("isMoving", true);
+        // tractor.SetBool("isMoving", true);
     }
 
     // Update is called once per frame
