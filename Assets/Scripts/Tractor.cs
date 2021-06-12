@@ -6,6 +6,7 @@ public class Tractor : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
     [SerializeField] float hmoveSpeed;
+    [SerializeField] GameObject[] trailers;
 
     private bool isSucceed;
     
@@ -32,9 +33,18 @@ public class Tractor : MonoBehaviour
 
 
 
-    void OnTriggerEnter()
+    void OnTriggerEnter(Collider collider)
     {
-
+        if (collider.tag == "ExtraTrailer")
+        {
+            Debug.Log("ExtraTrailer");
+            Destroy(collider.gameObject);
+            foreach (var trailer in trailers)
+            {
+                // trailer.transform.localScale += new Vector3(0, transform.localScale.y, 0);
+                // trailer.transform.position += new Vector3(0, transform.localScale.y/2, 0);
+            }
+        }
     }
     void OnTriggerExit()
     {

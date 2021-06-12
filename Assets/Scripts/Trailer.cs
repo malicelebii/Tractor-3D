@@ -17,7 +17,7 @@ public class Trailer : MonoBehaviour
     }
         void FixedUpdate()
     {
-        transform.forward = new Vector3(0,0,1);
+        // transform.forward = new Vector3(0,0,1);
     }
 
 }
