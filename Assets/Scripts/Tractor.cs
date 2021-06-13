@@ -16,9 +16,13 @@ public class Tractor : MonoBehaviour
     [SerializeField] AudioSource[] audioSource;
     [SerializeField] AudioSource trailerSound;
     [SerializeField] AudioSource diamondSound;
+    [SerializeField] GameObject vcamera;
 
     public Animator tractor;
     public Animator trailer;
+    public Animator sheep;
+    public Animator chicken;
+    public Animator elephant;
 
     public int test = 5;
 
@@ -49,6 +53,7 @@ public class Tractor : MonoBehaviour
     {
         if(gameOver==true){
             gameOverPanel.SetActive(true);
+            vcamera.SetActive(false);
             return;
         }
         if(isSucceed==true){
@@ -120,16 +125,22 @@ public class Tractor : MonoBehaviour
     {
         if (collision.gameObject.tag == "Obstacle"){
 
-            // Crashed();
+            Crashed();
         }
         if (collision.gameObject.tag == "LastGround"){
-
-            isSucceed=true;
+            sheep.SetBool("eat",true);
+            chicken.SetBool("eat",true);
+            elephant.SetBool("eat",true);
+            Debug.Log("collision detected");
+           Invoke("Succeed",2f);
         }
     }
     void OnTriggerExit()
     {
 
+    }
+    void Succeed(){
+            isSucceed=true;
     }
 
     void Crashed()

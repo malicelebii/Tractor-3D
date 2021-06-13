@@ -5,8 +5,8 @@ using UnityEngine;
 public class Obstacle2 : MonoBehaviour
 {
 
-    Vector3 noktaA = new Vector3(40, 12, 0);
-    Vector3 noktaB = new Vector3(60, 12, 0);
+    Vector3 noktaA = new Vector3(40, 1, 0);
+    Vector3 noktaB = new Vector3(60, 1, 0);
     float hiz = 0.8f;
     float t;
 
