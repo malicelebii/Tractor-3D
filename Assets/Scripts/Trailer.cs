@@ -34,6 +34,7 @@ public class Trailer : MonoBehaviour
                 tractor.trailers.RemoveRange(index, length);
                 gameObject.GetComponent<Rigidbody>().mass = 1000;
                 gameObject.GetComponent<HingeJoint>().breakForce = 0;
+                Debug.Log("obstacle carpis");
             }
         }
 
