@@ -112,7 +112,7 @@ public class Tractor : MonoBehaviour
     {
         if (collision.gameObject.tag == "Obstacle"){
 
-            Crashed();
+            // Crashed();
         }
         if (collision.gameObject.tag == "LastGround"){
 
