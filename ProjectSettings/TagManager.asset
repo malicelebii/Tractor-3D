@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - ExtraTrailer
+  - Diamond
+  - LastGround
   layers:
   - Default
   - TransparentFX

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Trailer : MonoBehaviour
 {
+    [SerializeField] Animator trailer;
     // Start is called before the first frame update
     public Tractor tractor;
     void Start()
@@ -14,7 +15,7 @@ public class Trailer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
         void FixedUpdate()
     {
@@ -38,4 +39,13 @@ public class Trailer : MonoBehaviour
 
     }
 
+    void OnCollisionEnter(Collision collision){
+        Crashed();  
+    }
+
+    void Crashed(){
+        trailer.SetBool("isCrashed",true);
+
+    }   
+    
 }
