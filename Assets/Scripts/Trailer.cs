@@ -24,22 +24,16 @@ public class Trailer : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.tag == "ExtraTrailer")
+        if (collider.tag == "Obstacle")
         {
-            var index = tractor.trailers.IndexOf(gameObject);
-            var length = tractor.trailers.Count - index;
-            // foreach (var item in tractor.trailers)
-            // {
-            //     if(index <= tractor.trailers.IndexOf(item))
-            //     {
-            //         item.GetComponent<HingeJoint>().breakForce = 0;
-            //     }
-            // }
-
-            gameObject.transform.position += new Vector3(0, 0, Time.deltaTime * 10);
-            tractor.trailers.RemoveRange(index, length);
-            gameObject.GetComponent<Rigidbody>().mass = 1000;
-            gameObject.GetComponent<HingeJoint>().breakForce = 0;
+            if (tractor.trailers.Count > 0){
+                var index = tractor.trailers.IndexOf(gameObject);
+                var length = tractor.trailers.Count - index;
+                gameObject.transform.position += new Vector3(0, 0, Time.deltaTime * 10);
+                tractor.trailers.RemoveRange(index, length);
+                gameObject.GetComponent<Rigidbody>().mass = 1000;
+                gameObject.GetComponent<HingeJoint>().breakForce = 0;
+            }
         }
 
     }

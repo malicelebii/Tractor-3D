@@ -36,7 +36,7 @@ public class Tractor : MonoBehaviour
     {
         transform.position += new Vector3(0, 0, Time.deltaTime * moveSpeed);
         transform.position += new Vector3(Input.GetAxis("Horizontal") * Time.deltaTime * hmoveSpeed, 0, 0);
-        // transform.forward = new Vector3(1, 0, 0);
+        transform.forward = new Vector3(1, 0, 0);
     }
 
 
@@ -48,11 +48,19 @@ public class Tractor : MonoBehaviour
         if (collider.tag == "ExtraTrailer")
         {
             Destroy(collider.gameObject);
-
-            GameObject newTrailer = Instantiate(trailers[trailers.Count-1], trailers[trailers.Count - 1].transform.position - new Vector3(0, 0, 10.8f), Quaternion.identity);
-            newTrailer.transform.rotation= Quaternion.Euler(0, 90, 0);
-            newTrailer.GetComponent<HingeJoint>().connectedBody=trailers[trailers.Count-1].GetComponent<Rigidbody>();
-            trailers.Add(newTrailer);
+            if (trailers.Count > 0) {
+                GameObject newTrailer = Instantiate(extraTrailer, trailers[trailers.Count - 1].transform.position - new Vector3(0, 0, 10.8f), Quaternion.identity);
+                newTrailer.transform.rotation= Quaternion.Euler(0, 90, 0);
+                newTrailer.GetComponent<HingeJoint>().connectedBody=trailers[trailers.Count-1].GetComponent<Rigidbody>();
+                trailers.Add(newTrailer);
+            } 
+            else {
+                Debug.Log("Else");
+                GameObject newTrailer = Instantiate(extraTrailer, gameObject.transform.position - new Vector3(8, 0, 10.8f), Quaternion.identity);
+                newTrailer.transform.rotation= Quaternion.Euler(0, 90, 0);
+                newTrailer.GetComponent<HingeJoint>().connectedBody=gameObject.GetComponent<Rigidbody>();
+                trailers.Add(newTrailer);
+            }
         }
     }
     void OnTriggerExit()
