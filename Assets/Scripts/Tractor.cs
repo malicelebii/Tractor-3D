@@ -128,11 +128,12 @@ public class Tractor : MonoBehaviour
             Crashed();
         }
         if (collision.gameObject.tag == "LastGround"){
+            moveSpeed = 10f;
             sheep.SetBool("eat",true);
             chicken.SetBool("eat",true);
             elephant.SetBool("eat",true);
             Debug.Log("collision detected");
-           Invoke("Succeed",2f);
+           Invoke("Succeed",5f);
         }
     }
     void OnTriggerExit()
