@@ -13,7 +13,9 @@ public class Tractor : MonoBehaviour
     public List<GameObject> trailers;
     [SerializeField] GameObject gameOverPanel;
     [SerializeField] GameObject nextLevelPanel;
-
+    [SerializeField] AudioSource[] audioSource;
+    [SerializeField] AudioSource trailerSound;
+    [SerializeField] AudioSource diamondSound;
 
     public Animator tractor;
     public Animator trailer;
@@ -28,6 +30,9 @@ public class Tractor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponents<AudioSource>();
+        trailerSound = audioSource[0];
+        diamondSound = audioSource[1];
         // tractor.SetBool("isMoving", true);
         // tractor.SetBool("isMoving", true);
         gameOver = false;
@@ -84,6 +89,7 @@ public class Tractor : MonoBehaviour
     {
         if (collider.tag == "ExtraTrailer")
         {
+            audioSource[0].Play();
             Destroy(collider.gameObject);
             if (trailers.Count > 0) {
                 GameObject newTrailer = Instantiate(extraTrailer, trailers[trailers.Count - 1].transform.position - new Vector3(0, 0, 10.8f), Quaternion.identity);
@@ -101,7 +107,9 @@ public class Tractor : MonoBehaviour
         }
         if (collider.tag == "Diamond")
         {
+            audioSource[1].Play();
             Debug.Log("Diamond");
+            
             Destroy(collider.gameObject);
             diamondCounter++;
         }
