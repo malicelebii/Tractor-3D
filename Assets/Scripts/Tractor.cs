@@ -7,10 +7,13 @@ public class Tractor : MonoBehaviour
     [SerializeField] float moveSpeed;
     [SerializeField] float hmoveSpeed;
     [SerializeField] GameObject extraTrailer;
-    [SerializeField] GameObject[] trailers;
+    public List<GameObject> trailers;
+
 
     public Animator tractor;
     public Animator trailer;
+
+    public int test = 5;
 
 
 
@@ -44,15 +47,12 @@ public class Tractor : MonoBehaviour
     {
         if (collider.tag == "ExtraTrailer")
         {
-            Debug.Log("ExtraTrailer");
             Destroy(collider.gameObject);
-            GameObject newTrailer = Instantiate(extraTrailer, trailers[trailers.Length - 1].transform.position - new Vector3(0, 0, 4.5f), Quaternion.identity);
 
-            foreach (var trailer in trailers)
-            {
-                // trailer.transform.localScale += new Vector3(0, transform.localScale.y, 0);
-                // trailer.transform.position += new Vector3(0, transform.localScale.y/2, 0);
-            }
+            GameObject newTrailer = Instantiate(trailers[trailers.Count-1], trailers[trailers.Count - 1].transform.position - new Vector3(0, 0, 10.8f), Quaternion.identity);
+            newTrailer.transform.rotation= Quaternion.Euler(0, 90, 0);
+            newTrailer.GetComponent<HingeJoint>().connectedBody=trailers[trailers.Count-1].GetComponent<Rigidbody>();
+            trailers.Add(newTrailer);
         }
     }
     void OnTriggerExit()
