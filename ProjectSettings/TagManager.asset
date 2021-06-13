@@ -8,6 +8,9 @@ TagManager:
   - Diamond
   - LastGround
   - Obstacle
+  - FirstStage
+  - SecondStage
+  - ThirdStage
   layers:
   - Default
   - TransparentFX

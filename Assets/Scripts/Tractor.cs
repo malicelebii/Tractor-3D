@@ -17,6 +17,9 @@ public class Tractor : MonoBehaviour
 
     public Animator tractor;
     public Animator trailer;
+    public Animator chicken;
+    public Animator sheep;
+    public Animator elephant;
 
     public int test = 5;
 
@@ -117,6 +120,20 @@ public class Tractor : MonoBehaviour
         if (collision.gameObject.tag == "LastGround"){
 
             isSucceed=true;
+        }
+        if (collision.gameObject.tag == "FirstStage"){
+           chicken.SetBool("eat",true);
+           Debug.Log("firststage");
+
+        }
+        if (collision.gameObject.tag == "SecondStage"){
+           sheep.SetBool("eat",true);
+           Debug.Log("secondstage");
+        }
+        if (collision.gameObject.tag == "ThirdStage"){
+           elephant.SetBool("eat",true);
+           Debug.Log("thirdstage");
+
         }
     }
     void OnTriggerExit()
