@@ -27,8 +27,19 @@ public class Trailer : MonoBehaviour
     {
         if (collider.tag == "Obstacle")
         {
-            if (tractor.trailers.Count > 0){
+
+        }
+
+    }
+
+    void OnCollisionEnter(Collision collision){
+        if (collision.gameObject.tag == "Obstacle") {
+                if (tractor.trailers.Count > 0){
                 var index = tractor.trailers.IndexOf(gameObject);
+                if (index == -1) {
+                    return;
+                }
+                Debug.Log(index);
                 var length = tractor.trailers.Count - index;
                 gameObject.transform.position += new Vector3(0, 0, Time.deltaTime * 10);
                 tractor.trailers.RemoveRange(index, length);
@@ -37,10 +48,6 @@ public class Trailer : MonoBehaviour
                 Debug.Log("obstacle carpis");
             }
         }
-
-    }
-
-    void OnCollisionEnter(Collision collision){
         Crashed();  
     }
 

@@ -93,7 +93,7 @@ public class Tractor : MonoBehaviour
             } 
             else {
                 Debug.Log("Else");
-                GameObject newTrailer = Instantiate(extraTrailer, gameObject.transform.position - new Vector3(8, 0, 10.8f), Quaternion.identity);
+                GameObject newTrailer = Instantiate(extraTrailer, gameObject.transform.position - new Vector3(0, 0, 0.25f), Quaternion.identity);
                 newTrailer.transform.rotation= Quaternion.Euler(0, 90, 0);
                 newTrailer.GetComponent<HingeJoint>().connectedBody=gameObject.GetComponent<Rigidbody>();
                 trailers.Add(newTrailer);
